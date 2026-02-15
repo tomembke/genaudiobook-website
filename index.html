@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAudioBook — KI Hörbuch Generator für Mac | EPUB zu Audiobook</title>
+    <meta name="description" content="Verwandle jedes EPUB, PDF oder Textdokument in ein professionelles Hörbuch — 100% lokal auf deinem Mac. 5 KI-Stimmen, 17+ Sprachen, Voice Cloning. 24h kostenlos testen.">
+    <meta name="keywords" content="audiobook generator, hörbuch erstellen, epub to audiobook, text to speech mac, KI hörbuch, AI audiobook, voice cloning, offline tts, mac app, apple silicon">
+    <meta name="author" content="Tom Emke">
+    <link rel="canonical" href="https://genaudiobook.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://genaudiobook.com/">
+    <meta property="og:title" content="GenAudioBook — KI Hörbuch Generator für Mac">
+    <meta property="og:description" content="Verwandle jedes Buch in ein Audiobook. 5 KI-Engines, 17+ Sprachen, Voice Cloning. 100% offline auf deinem Mac.">
+    <meta property="og:site_name" content="GenAudioBook">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GenAudioBook — KI Hörbuch Generator für Mac">
+    <meta name="twitter:description" content="5 KI-Engines, 17+ Sprachen, Voice Cloning. 100% offline. 24h kostenlos testen, dann 5€ einmalig.">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "GenAudioBook",
+        "operatingSystem": "macOS 13+",
+        "applicationCategory": "MultimediaApplication",
+        "description": "AI-powered audiobook generator for Mac. Convert EPUB, PDF and text to audiobooks using 5 TTS engines with 17+ languages and voice cloning. Runs 100% offline on Apple Silicon.",
+        "offers": [
+            {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "EUR",
+                "description": "24-hour free trial"
+            },
+            {
+                "@type": "Offer",
+                "price": "5.00",
+                "priceCurrency": "EUR",
+                "description": "Lifetime Pro license"
+            }
+        ],
+        "author": {
+            "@type": "Person",
+            "name": "Tom Emke"
+        }
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ==================== NAVBAR ==================== -->
+<nav class="navbar">
+    <div class="container">
+        <a href="/" class="nav-logo">GenAudioBook</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#features" data-de="Features" data-en="Features">Features</a></li>
+            <li><a href="#engines" data-de="KI Engines" data-en="AI Engines">KI Engines</a></li>
+            <li><a href="#pricing" data-de="Preise" data-en="Pricing">Preise</a></li>
+            <li><a href="#faq" data-de="FAQ" data-en="FAQ">FAQ</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="lang-toggle">
+                <button id="langDe" class="active" onclick="setLang('de')">DE</button>
+                <button id="langEn" onclick="setLang('en')">EN</button>
+            </div>
+            <a href="https://tomember.gumroad.com/l/epdibx" class="btn-nav-cta" data-de="Pro kaufen — 5 €" data-en="Buy Pro — €5">Pro kaufen — 5 €</a>
+            <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()">☰</button>
+        </div>
+    </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge">
+            <span data-de="100% Offline auf Apple Silicon" data-en="100% Offline on Apple Silicon">100% Offline auf Apple Silicon</span>
+        </div>
+        <h1>
+            <span data-de="Verwandle jedes Buch" data-en="Turn Any Book">Verwandle jedes Buch</span><br>
+            <span data-de="in ein " data-en="Into an ">in ein </span><span class="gradient-text" data-de="KI-Hörbuch" data-en="AI Audiobook">KI-Hörbuch</span>
+        </h1>
+        <p class="subtitle" data-de="GenAudioBook konvertiert EPUB, PDF und Textdokumente in professionelle Hörbücher — mit 5 KI-Engines, 17+ Sprachen und Voice Cloning. Alles läuft lokal auf deinem Mac. Keine Cloud, keine Daten die dein Gerät verlassen." data-en="GenAudioBook converts EPUB, PDF and text documents into professional audiobooks — with 5 AI engines, 17+ languages and voice cloning. Everything runs locally on your Mac. No cloud, no data leaves your device.">
+            GenAudioBook konvertiert EPUB, PDF und Textdokumente in professionelle Hörbücher — mit 5 KI-Engines, 17+ Sprachen und Voice Cloning. Alles läuft lokal auf deinem Mac. Keine Cloud, keine Daten die dein Gerät verlassen.
+        </p>
+        <div class="hero-buttons">
+            <a href="#download" class="btn-primary" data-de="Kostenlos testen" data-en="Try Free">Kostenlos testen</a>
+            <a href="#how-it-works" class="btn-secondary" data-de="So funktioniert's" data-en="See How It Works">So funktioniert's</a>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FEATURES ==================== -->
+<section id="features">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label" data-de="Features" data-en="Features">Features</span>
+            <h2 data-de="Alles was du für professionelle Hörbücher brauchst" data-en="Everything You Need for Professional Audiobooks">Alles was du für professionelle Hörbücher brauchst</h2>
+            <p data-de="GenAudioBook vereint fünf führende KI-Sprachsynthese-Engines in einer nativen macOS-App. Wähle die perfekte Stimme für jedes Projekt — von ultra-schnell bis studio-nah." data-en="GenAudioBook combines five leading AI speech synthesis engines in one native macOS app. Choose the perfect voice for every project — from ultra-fast to studio-quality.">GenAudioBook vereint fünf führende KI-Sprachsynthese-Engines in einer nativen macOS-App. Wähle die perfekte Stimme für jedes Projekt — von ultra-schnell bis studio-nah.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                </div>
+                <h3 data-de="5 KI-Sprachengines" data-en="5 AI Voice Engines">5 KI-Sprachengines</h3>
+                <p data-de="Kokoro, F5-TTS, CosyVoice 2, MeloTTS, Chatterbox. Jede Engine hat eigene Stärken — von ultra-effizienter Generierung bis hin zu menschennaher Natürlichkeit. Installiere nur die Engines, die du brauchst." data-en="Kokoro, F5-TTS, CosyVoice 2, MeloTTS and Chatterbox. Each engine has unique strengths — from ultra-efficient generation to human-level naturalness. Install only the engines you need.">Kokoro, F5-TTS, CosyVoice 2, MeloTTS, Chatterbox. Jede Engine hat eigene Stärken — von ultra-effizienter Generierung bis hin zu menschennaher Natürlichkeit. Installiere nur die Engines, die du brauchst.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h3 data-de="17+ Sprachen" data-en="17+ Languages">17+ Sprachen</h3>
+                <p data-de="Generiere Hörbücher in Deutsch, Englisch, Französisch, Spanisch, Italienisch, Portugiesisch, Japanisch, Chinesisch, Koreanisch, Russisch, Niederländisch, Polnisch, Türkisch und vielen weiteren Sprachen." data-en="Generate audiobooks in German, English, French, Spanish, Italian, Portuguese, Japanese, Chinese, Korean, Russian, Dutch, Polish, Turkish and many more languages.">Generiere Hörbücher in Deutsch, Englisch, Französisch, Spanisch, Italienisch, Portugiesisch, Japanisch, Chinesisch, Koreanisch, Russisch, Niederländisch, Polnisch, Türkisch und vielen weiteren Sprachen.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <h3 data-de="Voice Cloning" data-en="Voice Cloning">Voice Cloning</h3>
+                <p data-de="Klone jede beliebige Stimme mit nur 5–30 Sekunden Referenz-Audio. Vier der sechs Engines unterstützen Zero-Shot Voice Cloning — dein Hörbuch, in genau der Stimme die du willst." data-en="Clone any voice with just 5–30 seconds of reference audio. Four of six engines support zero-shot voice cloning — your audiobook, in exactly the voice you want.">Klone jede beliebige Stimme mit nur 5–30 Sekunden Referenz-Audio. Vier der sechs Engines unterstützen Zero-Shot Voice Cloning — dein Hörbuch, in genau der Stimme die du willst.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <h3 data-de="100% Offline und Privat" data-en="100% Offline and Private">100% Offline und Privat</h3>
+                <p data-de="Alle KI-Modelle laufen lokal auf deinem Mac. Keine Cloud-Verbindung, keine API-Keys, keine Daten die dein Gerät verlassen. Deine Bücher und Audiodateien bleiben ausschließlich bei dir." data-en="All AI models run locally on your Mac. No cloud connection, no API keys, no data leaves your device. Your books and audio files stay exclusively with you.">Alle KI-Modelle laufen lokal auf deinem Mac. Keine Cloud-Verbindung, keine API-Keys, keine Daten die dein Gerät verlassen. Deine Bücher und Audiodateien bleiben ausschließlich bei dir.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <h3 data-de="EPUB, PDF, TXT und DOCX" data-en="EPUB, PDF, TXT and DOCX">EPUB, PDF, TXT und DOCX</h3>
+                <p data-de="Importiere Bücher in allen gängigen Formaten. Kapitel werden automatisch erkannt und strukturiert. Der integrierte Editor erlaubt Anpassungen vor der Generierung." data-en="Import books in all common formats. Chapters are automatically detected and structured. The built-in editor allows adjustments before generation.">Importiere Bücher in allen gängigen Formaten. Kapitel werden automatisch erkannt und strukturiert. Der integrierte Editor erlaubt Anpassungen vor der Generierung.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <h3 data-de="Apple Silicon Optimiert" data-en="Apple Silicon Optimized">Apple Silicon Optimiert</h3>
+                <p data-de="Nutzt die volle Leistung der M1, M2, M3 und M4 Chips mit MPS-Beschleunigung. Ein 300-Seiten-Buch kann in unter 30 Minuten zum Hörbuch werden — je nach gewählter Engine." data-en="Leverages the full power of M1, M2, M3 and M4 chips with MPS acceleration. A 300-page book can become an audiobook in under 30 minutes — depending on the chosen engine.">Nutzt die volle Leistung der M1, M2, M3 und M4 Chips mit MPS-Beschleunigung. Ein 300-Seiten-Buch kann in unter 30 Minuten zum Hörbuch werden — je nach gewählter Engine.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== ENGINE COMPARISON ==================== -->
+<section id="engines" class="engine-section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label" data-de="KI Engines" data-en="AI Engines">KI Engines</span>
+            <h2 data-de="Fünf Engines, jede mit eigener Stärke" data-en="Five Engines, Each With Its Own Strength">Fünf Engines, jede mit eigener Stärke</h2>
+            <p data-de="Wähle die richtige Engine für dein Projekt. Alle Engines werden über den integrierten Model Manager installiert — lade nur herunter, was du wirklich brauchst." data-en="Choose the right engine for your project. All engines are installed via the built-in Model Manager — download only what you actually need.">Wähle die richtige Engine für dein Projekt. Alle Engines werden über den integrierten Model Manager installiert — lade nur herunter, was du wirklich brauchst.</p>
+        </div>
+        <div class="engine-grid">
+            <!-- Kokoro -->
+            <div class="engine-card fade-in">
+                <div class="engine-card-header">
+                    <h3>Kokoro v1.0</h3>
+                    <span class="engine-badge green">Apache 2.0</span>
+                </div>
+                <p class="engine-desc" data-de="Ultra-effiziente Engine mit nur 82 Millionen Parametern. Ideal für lange Sessions und schnelle Generierung. Läuft auch auf CPUs flüssig und verbraucht minimal RAM." data-en="Ultra-efficient engine with only 82 million parameters. Ideal for long sessions and fast generation. Runs smoothly even on CPUs with minimal RAM usage.">Ultra-effiziente Engine mit nur 82 Millionen Parametern. Ideal für lange Sessions und schnelle Generierung. Läuft auch auf CPUs flüssig und verbraucht minimal RAM.</p>
+                <div class="engine-meta">
+                    <div class="engine-meta-row">
+                        <span class="meta-label" data-de="Sprachen" data-en="Languages">Sprachen</span>
+                        <span class="meta-value">EN, JA, ZH</span>
+                    </div>
+                    <div class="engine-meta-row">
+                        <span class="meta-label" data-de="Größe" data-en="Size">Größe</span>
+                        <span class="meta-value">~0.3 GB</span>
+                    </div>
+                    <div class="engine-meta-row">
+                        <span class="meta-label">Voice Cloning</span>
+                        <span class="meta-value">—</span>
+                    </div>
+                </div>
+            </div>
+            <!-- F5-TTS -->
+            <div class="engine-card fade-in">
+                <div class="engine-card-header">
+                    <h3>F5-TTS</h3>
+                    <span class="engine-badge green">MIT</span>
+                </div>
+                <p class="engine-desc" data-de="Zero-Shot Voice Cloning mit hervorragender Multilingual-Unterstützung. Besonders robust bei ungewöhnlichen Texten und Eigennamen. Unterstützt 10 Sprachen." data-en="Zero-shot voice cloning with excellent multilingual support. Particularly robust with unusual texts and proper nouns. Supports 10 languages.">Zero-Shot Voice Cloning mit hervorragender Multilingual-Unterstützung. Besonders robust bei ungewöhnlichen Texten und Eigennamen. Unterstützt 10 Sprachen.</p>
+                <div class="engine-meta">
+                    <div class="engine-meta-row">
+                        <span class="meta-label" data-de="Sprachen" data-en="Languages">Sprachen</span>
+                        <span class="meta-value">EN, DE, FR, ES, IT, PT, ZH, JA, KO, RU</span>
+                    </div>
+                    <div class="engine-meta-row">
+                        <span class="meta-label" data-de="Größe" data-en="Size">Größe</span>
+                        <span class="meta-value">~1.2 GB</span>
+                    </div>
+                    <div class="engine-meta-row">
+                        <span class="meta-label">Voice Cloning</span>
+                        <span class="meta-value cloning-yes" data-de="Ja" data-en="Yes">Ja</span>
+                    </div>
+                </div>
+            </div>
+            <!-- CosyVoice 2 -->
+            <div class="engine-card fade-in">
+                <div class="engine-card-header">
+                    <h3>CosyVoice 2</h3>
+                    <span class="engine-badge green">Apache 2.0</span>
+                </div>
+                <p class="engine-desc" data-de="Menschennahe Natürlichkeit von Alibaba. Die aktuell natürlichste Open-Source-Stimme mit Unterstützung für 13 Sprachen und exzellentem Voice Cloning." data-en="Human-level naturalness by Alibaba. Currently the most natural open-source voice with support for 13 languages and excellent voice cloning.">Menschennahe Natürlichkeit von Alibaba. Die aktuell natürlichste Open-Source-Stimme mit Unterstützung für 13 Sprachen und exzellentem Voice Cloning.</p>
+                <div class="engine-meta">
+                    <div class="engine-meta-row">
+                        <span class="meta-label" data-de="Sprachen" data-en="Languages">Sprachen</span>
+                        <span class="meta-value">13 <span data-de="Sprachen" data-en="languages">Sprachen</span></span>
+                    </div>
+                    <div class="engine-meta-row">
+                        <span class="meta-label" data-de="Größe" data-en="Size">Größe</span>
+                        <span class="meta-value">~2.0 GB</span>
+                    </div>
+                    <div class="engine-meta-row">
+                        <span class="meta-label">Voice Cloning</span>
+                        <span class="meta-value cloning-yes" data-de="Ja" data-en="Yes">Ja</span>
+                    </div>
+                </div>
+            </div>
+            <!-- MeloTTS -->
+            <div class="engine-card fade-in">
+                <div class="engine-card-header">
+                    <h3>MeloTTS</h3>
+                    <span class="engine-badge green">MIT</span>
+                </div>
+                <p class="engine-desc" data-de="Ultra-schnelle Engine für Batch-Processing ganzer Bücher. Mit einem Real-Time-Factor unter 0.1 die schnellste Option — ideal wenn Geschwindigkeit wichtiger ist als maximale Natürlichkeit." data-en="Ultra-fast engine for batch processing entire books. With a real-time factor below 0.1, the fastest option — ideal when speed matters more than maximum naturalness.">Ultra-schnelle Engine für Batch-Processing ganzer Bücher. Mit einem Real-Time-Factor unter 0.1 die schnellste Option — ideal wenn Geschwindigkeit wichtiger ist als maximale Natürlichkeit.</p>
+                <div class="engine-meta">
+                    <div class="engine-meta-row">
+                        <span class="meta-label" data-de="Sprachen" data-en="Languages">Sprachen</span>
+                        <span class="meta-value">EN, ES, FR, ZH, JA, KO</span>
+                    </div>
+                    <div class="engine-meta-row">
+                        <span class="meta-label" data-de="Größe" data-en="Size">Größe</span>
+                        <span class="meta-value">~0.5 GB</span>
+                    </div>
+                    <div class="engine-meta-row">
+                        <span class="meta-label">Voice Cloning</span>
+                        <span class="meta-value">—</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Chatterbox -->
+            <div class="engine-card fade-in">
+                <div class="engine-card-header">
+                    <h3>Chatterbox</h3>
+                    <span class="engine-badge green">MIT</span>
+                </div>
+                <p class="engine-desc" data-de="Spezialisiert auf englische Sprache mit optionalem Turbo-Modus für noch schnellere Generierung. Unterstützt Voice Cloning und liefert besonders ausdrucksstarke englische Stimmen." data-en="Specialized in English with optional turbo mode for even faster generation. Supports voice cloning and delivers particularly expressive English voices.">Spezialisiert auf englische Sprache mit optionalem Turbo-Modus für noch schnellere Generierung. Unterstützt Voice Cloning und liefert besonders ausdrucksstarke englische Stimmen.</p>
+                <div class="engine-meta">
+                    <div class="engine-meta-row">
+                        <span class="meta-label" data-de="Sprachen" data-en="Languages">Sprachen</span>
+                        <span class="meta-value">EN</span>
+                    </div>
+                    <div class="engine-meta-row">
+                        <span class="meta-label" data-de="Größe" data-en="Size">Größe</span>
+                        <span class="meta-value">~1.5 GB</span>
+                    </div>
+                    <div class="engine-meta-row">
+                        <span class="meta-label">Voice Cloning</span>
+                        <span class="meta-value cloning-yes" data-de="Ja" data-en="Yes">Ja</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section id="how-it-works">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label" data-de="So funktioniert's" data-en="How It Works">So funktioniert's</span>
+            <h2 data-de="Vom Buch zum Hörbuch in drei Schritten" data-en="From Book to Audiobook in Three Steps">Vom Buch zum Hörbuch in drei Schritten</h2>
+            <p data-de="Kein technisches Wissen nötig. Importiere dein Buch, wähle eine Stimme und starte die Generierung." data-en="No technical knowledge required. Import your book, choose a voice and start generating.">Kein technisches Wissen nötig. Importiere dein Buch, wähle eine Stimme und starte die Generierung.</p>
+        </div>
+        <div class="steps-grid fade-in">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3 data-de="Buch importieren" data-en="Import Your Book">Buch importieren</h3>
+                <p data-de="Ziehe dein EPUB, PDF, TXT oder DOCX in die App. Kapitel und Struktur werden automatisch erkannt. Im integrierten Editor kannst du den Text vor der Generierung anpassen." data-en="Drag your EPUB, PDF, TXT or DOCX into the app. Chapters and structure are detected automatically. The built-in editor lets you adjust text before generation.">Ziehe dein EPUB, PDF, TXT oder DOCX in die App. Kapitel und Struktur werden automatisch erkannt. Im integrierten Editor kannst du den Text vor der Generierung anpassen.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3 data-de="Engine und Stimme wählen" data-en="Choose Engine and Voice">Engine und Stimme wählen</h3>
+                <p data-de="Wähle eine der fünf KI-Engines und optional eine Referenz-Stimme für Voice Cloning. Stelle Geschwindigkeit und Kreativität nach deinen Wünschen ein." data-en="Choose one of five AI engines and optionally a reference voice for voice cloning. Adjust speed and creativity to your preferences.">Wähle eine der fünf KI-Engines und optional eine Referenz-Stimme für Voice Cloning. Stelle Geschwindigkeit und Kreativität nach deinen Wünschen ein.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3 data-de="Generieren und Exportieren" data-en="Generate and Export">Generieren und Exportieren</h3>
+                <p data-de="Klicke auf Start und dein Hörbuch wird lokal generiert. Exportiere als MP3, WAV oder FLAC — kapitelweise, satzweise oder als Gesamtdatei." data-en="Click Start and your audiobook is generated locally. Export as MP3, WAV or FLAC — by chapter, by sentence or as a single file.">Klicke auf Start und dein Hörbuch wird lokal generiert. Exportiere als MP3, WAV oder FLAC — kapitelweise, satzweise oder als Gesamtdatei.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== PRICING ==================== -->
+<section id="pricing">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label" data-de="Preise" data-en="Pricing">Preise</span>
+            <h2 data-de="Einfach, fair und einmalig" data-en="Simple, Fair and One-Time">Einfach, fair und einmalig</h2>
+            <p data-de="Kein Abo, keine versteckten Kosten, keine Limits pro Zeichen. Einmal zahlen, für immer nutzen." data-en="No subscription, no hidden costs, no per-character limits. Pay once, use forever.">Kein Abo, keine versteckten Kosten, keine Limits pro Zeichen. Einmal zahlen, für immer nutzen.</p>
+        </div>
+        <div class="pricing-grid fade-in">
+            <!-- Free Trial -->
+            <div class="pricing-card">
+                <h3 data-de="Kostenlose Testversion" data-en="Free Trial">Kostenlose Testversion</h3>
+                <div class="pricing-price">0 <span class="currency">€</span></div>
+                <div class="pricing-period" data-de="24 Stunden Generierungszeit" data-en="24 hours of generation time">24 Stunden Generierungszeit</div>
+                <ul class="pricing-features">
+                    <li data-de="Alle fünf KI-Engines verfügbar" data-en="All five AI engines available">Alle fünf KI-Engines verfügbar</li>
+                    <li data-de="Alle 17+ Sprachen" data-en="All 17+ languages">Alle 17+ Sprachen</li>
+                    <li data-de="Voice Cloning inklusive" data-en="Voice cloning included">Voice Cloning inklusive</li>
+                    <li data-de="Voller Funktionsumfang" data-en="Full feature set">Voller Funktionsumfang</li>
+                    <li data-de="24 Stunden Generierungszeit" data-en="24 hours generation time limit">24 Stunden Generierungszeit</li>
+                </ul>
+                <a href="#download" class="btn-secondary" data-de="Kostenlos testen" data-en="Try Free">Kostenlos testen</a>
+            </div>
+            <!-- Pro -->
+            <div class="pricing-card featured" data-badge="EMPFOHLEN">
+                <h3>Pro</h3>
+                <div class="pricing-price">5 <span class="currency">€</span></div>
+                <div class="pricing-period" data-de="Einmalig — Lebenslanger Zugriff" data-en="One-time — Lifetime access">Einmalig — Lebenslanger Zugriff</div>
+                <ul class="pricing-features">
+                    <li data-de="Alles aus der Testversion" data-en="Everything from the trial">Alles aus der Testversion</li>
+                    <li data-de="Unbegrenzte Generierungszeit" data-en="Unlimited generation time">Unbegrenzte Generierungszeit</li>
+                    <li data-de="Lebenslange Updates" data-en="Lifetime updates">Lebenslange Updates</li>
+                    <li data-de="Unterstütze einen Solo-Entwickler" data-en="Support a solo developer">Unterstütze einen Solo-Entwickler</li>
+                    <li data-de="Kein Abo, keine versteckten Kosten" data-en="No subscription, no hidden costs">Kein Abo, keine versteckten Kosten</li>
+                </ul>
+                <a href="https://tomember.gumroad.com/l/epdibx" class="btn-primary" data-de="Jetzt kaufen — 5 €" data-en="Buy Now — €5">Jetzt kaufen — 5 €</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SYSTEM REQUIREMENTS ==================== -->
+<section id="system" class="engine-section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label" data-de="Systemanforderungen" data-en="System Requirements">Systemanforderungen</span>
+            <h2 data-de="Was du brauchst" data-en="What You Need">Was du brauchst</h2>
+        </div>
+        <div class="sysreq-grid fade-in">
+            <div class="sysreq-item">
+                <div class="sysreq-icon">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <h4 data-de="Prozessor" data-en="Processor">Prozessor</h4>
+                <p>Apple Silicon<br>(M1 / M2 / M3 / M4)</p>
+            </div>
+            <div class="sysreq-item">
+                <div class="sysreq-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </div>
+                <h4 data-de="Betriebssystem" data-en="Operating System">Betriebssystem</h4>
+                <p>macOS 13+<br>(Ventura)</p>
+            </div>
+            <div class="sysreq-item">
+                <div class="sysreq-icon">
+                    <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                </div>
+                <h4>RAM</h4>
+                <p data-de="16 GB empfohlen" data-en="16 GB recommended">16 GB empfohlen</p>
+            </div>
+            <div class="sysreq-item">
+                <div class="sysreq-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                </div>
+                <h4 data-de="Speicherplatz" data-en="Storage">Speicherplatz</h4>
+                <p data-de="2–8 GB je nach Engines" data-en="2–8 GB depending on engines">2–8 GB je nach Engines</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section id="faq">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="label">FAQ</span>
+            <h2 data-de="Häufig gestellte Fragen" data-en="Frequently Asked Questions">Häufig gestellte Fragen</h2>
+            <p data-de="Alles was du über GenAudioBook wissen musst." data-en="Everything you need to know about GenAudioBook.">Alles was du über GenAudioBook wissen musst.</p>
+        </div>
+        <div class="faq-list fade-in">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-de="Brauche ich eine Internetverbindung?" data-en="Do I need an internet connection?">Brauche ich eine Internetverbindung?</span>
+                    <span class="faq-arrow">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p data-de="Nur beim ersten Start, um die KI-Modelle herunterzuladen. Danach läuft alles 100% offline — keine Cloud, keine API-Keys, keine Daten die dein Gerät verlassen." data-en="Only on first launch to download the AI models. After that, everything runs 100% offline — no cloud, no API keys, no data leaves your device.">Nur beim ersten Start, um die KI-Modelle herunterzuladen. Danach läuft alles 100% offline — keine Cloud, keine API-Keys, keine Daten die dein Gerät verlassen.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-de="Welche Buchformate werden unterstützt?" data-en="Which book formats are supported?">Welche Buchformate werden unterstützt?</span>
+                    <span class="faq-arrow">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p data-de="EPUB, PDF, TXT und DOCX. EPUB wird empfohlen, da die Kapitelstruktur am besten erkannt wird." data-en="EPUB, PDF, TXT and DOCX. EPUB is recommended as chapter structure is best detected.">EPUB, PDF, TXT und DOCX. EPUB wird empfohlen, da die Kapitelstruktur am besten erkannt wird.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-de="Was ist Voice Cloning und wie funktioniert es?" data-en="What is voice cloning and how does it work?">Was ist Voice Cloning und wie funktioniert es?</span>
+                    <span class="faq-arrow">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p data-de="Mit Voice Cloning kannst du eine beliebige Stimme nachahmen. Lade ein kurzes Audio-Sample (5–30 Sekunden) hoch, und die KI generiert das Hörbuch in dieser Stimme. Verfügbar mit F5-TTS, CosyVoice 2 und Chatterbox." data-en="Voice cloning lets you replicate any voice. Upload a short audio sample (5–30 seconds), and the AI generates the audiobook in that voice. Available with F5-TTS, CosyVoice 2 and Chatterbox.">Mit Voice Cloning kannst du eine beliebige Stimme nachahmen. Lade ein kurzes Audio-Sample (5–30 Sekunden) hoch, und die KI generiert das Hörbuch in dieser Stimme. Verfügbar mit F5-TTS, CosyVoice 2 und Chatterbox.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-de="Wie lange dauert die Generierung eines Hörbuchs?" data-en="How long does it take to generate an audiobook?">Wie lange dauert die Generierung eines Hörbuchs?</span>
+                    <span class="faq-arrow">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p data-de="Das hängt von der Engine und deinem Mac ab. Mit MeloTTS oder Kokoro auf einem M2/M3 Mac dauert ein 300-Seiten-Buch ca. 15–30 Minuten. CosyVoice 2 (höchste Qualität) braucht länger, ca. 1–2 Stunden." data-en="It depends on the engine and your Mac. With MeloTTS or Kokoro on an M2/M3 Mac, a 300-page book takes about 15–30 minutes. CosyVoice 2 (highest quality) takes longer, about 1–2 hours.">Das hängt von der Engine und deinem Mac ab. Mit MeloTTS oder Kokoro auf einem M2/M3 Mac dauert ein 300-Seiten-Buch ca. 15–30 Minuten. CosyVoice 2 (höchste Qualität) braucht länger, ca. 1–2 Stunden.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-de="Funktioniert GenAudioBook auf Intel Macs?" data-en="Does GenAudioBook work on Intel Macs?">Funktioniert GenAudioBook auf Intel Macs?</span>
+                    <span class="faq-arrow">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p data-de="GenAudioBook ist für Apple Silicon (M1/M2/M3/M4) optimiert. Intel Macs werden nicht offiziell unterstützt, da die Generierung ohne MPS-Beschleunigung sehr langsam wäre." data-en="GenAudioBook is optimized for Apple Silicon (M1/M2/M3/M4). Intel Macs are not officially supported as generation without MPS acceleration would be very slow.">GenAudioBook ist für Apple Silicon (M1/M2/M3/M4) optimiert. Intel Macs werden nicht offiziell unterstützt, da die Generierung ohne MPS-Beschleunigung sehr langsam wäre.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-de="Was passiert nach den 24 Stunden Testzeit?" data-en="What happens after the 24-hour trial?">Was passiert nach den 24 Stunden Testzeit?</span>
+                    <span class="faq-arrow">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p data-de="Nach 24 Stunden Generierungszeit (nicht Kalenderzeit) wird die Generierung pausiert. Bereits erstellte Hörbücher bleiben erhalten. Mit der Pro-Version für einmalig 5 € wird das Limit aufgehoben — lebenslang." data-en="After 24 hours of generation time (not calendar time), generation is paused. Already created audiobooks are kept. The Pro version for a one-time €5 removes the limit — for life.">Nach 24 Stunden Generierungszeit (nicht Kalenderzeit) wird die Generierung pausiert. Bereits erstellte Hörbücher bleiben erhalten. Mit der Pro-Version für einmalig 5 € wird das Limit aufgehoben — lebenslang.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-de="Welche Engine soll ich für mein Projekt wählen?" data-en="Which engine should I choose for my project?">Welche Engine soll ich für mein Projekt wählen?</span>
+                    <span class="faq-arrow">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p data-de="Für Englisch: Chatterbox (beste Qualität) oder Kokoro (schnellste). Für Deutsch: F5-TTS oder CosyVoice 2. Für maximale Sprachvielfalt: CosyVoice 2 (13 Sprachen). Für Geschwindigkeit: MeloTTS. Für Voice Cloning: F5-TTS oder CosyVoice 2." data-en="For English: Chatterbox (best quality) or Kokoro (fastest). For German: F5-TTS or CosyVoice 2. For maximum language variety: CosyVoice 2 (13 languages). For speed: MeloTTS. For voice cloning: F5-TTS or CosyVoice 2.">Für Englisch: Chatterbox (beste Qualität) oder Kokoro (schnellste). Für Deutsch: F5-TTS oder CosyVoice 2. Für maximale Sprachvielfalt: CosyVoice 2 (13 Sprachen). Für Geschwindigkeit: MeloTTS. Für Voice Cloning: F5-TTS oder CosyVoice 2.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-de="Kann ich die generierten Hörbücher kommerziell nutzen?" data-en="Can I use the generated audiobooks commercially?">Kann ich die generierten Hörbücher kommerziell nutzen?</span>
+                    <span class="faq-arrow">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p data-de="Ja! Alle fünf Engines nutzen Open-Source-Lizenzen (Apache 2.0 oder MIT), die kommerzielle Nutzung erlauben. Du kannst die generierten Hörbücher frei verwenden." data-en="Yes! All five engines use open-source licenses (Apache 2.0 or MIT) that permit commercial use. You can freely use the generated audiobooks.">Ja! Alle fünf Engines nutzen Open-Source-Lizenzen (Apache 2.0 oder MIT), die kommerzielle Nutzung erlauben. Du kannst die generierten Hörbücher frei verwenden.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-de="Gibt es eine Windows- oder Linux-Version?" data-en="Is there a Windows or Linux version?">Gibt es eine Windows- oder Linux-Version?</span>
+                    <span class="faq-arrow">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p data-de="Aktuell ist GenAudioBook nur für macOS mit Apple Silicon verfügbar. Eine Windows-Version ist für die Zukunft geplant, aber noch ohne festes Datum." data-en="Currently GenAudioBook is only available for macOS with Apple Silicon. A Windows version is planned for the future but without a fixed date yet.">Aktuell ist GenAudioBook nur für macOS mit Apple Silicon verfügbar. Eine Windows-Version ist für die Zukunft geplant, aber noch ohne festes Datum.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span data-de="Wie aktiviere ich die Pro-Version?" data-en="How do I activate the Pro version?">Wie aktiviere ich die Pro-Version?</span>
+                    <span class="faq-arrow">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p data-de="Nach dem Kauf auf Gumroad erhältst du einen Lizenzschlüssel per E-Mail. In der App klickst du auf 'Vollversion', gibst den Key ein und klickst auf 'Aktivieren'. Dauert 10 Sekunden." data-en="After purchasing on Gumroad you receive a license key via email. In the app, click 'Full Version', enter the key and click 'Activate'. Takes 10 seconds.">Nach dem Kauf auf Gumroad erhältst du einen Lizenzschlüssel per E-Mail. In der App klickst du auf 'Vollversion', gibst den Key ein und klickst auf 'Aktivieren'. Dauert 10 Sekunden.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== DOWNLOAD / CTA ==================== -->
+<section id="download" class="cta-banner">
+    <div class="container">
+        <h2 data-de="Bereit für dein erstes KI-Hörbuch?" data-en="Ready for Your First AI Audiobook?">Bereit für dein erstes KI-Hörbuch?</h2>
+        <p data-de="Lade GenAudioBook kostenlos herunter und teste alle Features 24 Stunden lang. Keine Registrierung, keine Kreditkarte." data-en="Download GenAudioBook for free and test all features for 24 hours. No registration, no credit card.">Lade GenAudioBook kostenlos herunter und teste alle Features 24 Stunden lang. Keine Registrierung, keine Kreditkarte.</p>
+        <div class="cta-buttons">
+            <a href="#" class="btn-primary" data-de="Download für macOS (Apple Silicon)" data-en="Download for macOS (Apple Silicon)">Download für macOS (Apple Silicon)</a>
+            <a href="https://tomember.gumroad.com/l/epdibx" class="btn-secondary" data-de="Pro kaufen — 5 €" data-en="Buy Pro — €5">Pro kaufen — 5 €</a>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>GenAudioBook</h3>
+                <p data-de="KI-Hörbuch Generator für macOS. Fünf Engines, 17+ Sprachen, Voice Cloning. 100% offline und privat. Entwickelt in Hamburg." data-en="AI audiobook generator for macOS. Five engines, 17+ languages, voice cloning. 100% offline and private. Developed in Hamburg.">KI-Hörbuch Generator für macOS. Fünf Engines, 17+ Sprachen, Voice Cloning. 100% offline und privat. Entwickelt in Hamburg.</p>
+            </div>
+            <div class="footer-col">
+                <h4 data-de="Produkt" data-en="Product">Produkt</h4>
+                <ul>
+                    <li><a href="#features" data-de="Features" data-en="Features">Features</a></li>
+                    <li><a href="#engines" data-de="KI Engines" data-en="AI Engines">KI Engines</a></li>
+                    <li><a href="#pricing" data-de="Preise" data-en="Pricing">Preise</a></li>
+                    <li><a href="#download" data-de="Download" data-en="Download">Download</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-de="Support" data-en="Support">Support</h4>
+                <ul>
+                    <li><a href="#faq" data-de="FAQ" data-en="FAQ">FAQ</a></li>
+                    <li><a href="mailto:emke.tom@gmail.com" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-de="Rechtliches" data-en="Legal">Rechtliches</h4>
+                <ul>
+                    <li><a href="impressum.html" data-de="Impressum" data-en="Imprint">Impressum</a></li>
+                    <li><a href="datenschutz.html" data-de="Datenschutz" data-en="Privacy (DE)">Datenschutz</a></li>
+                    <li><a href="privacy.html" data-de="Privacy Policy (EN)" data-en="Privacy Policy">Privacy Policy (EN)</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 GenAudioBook. Tom Emke.</span>
+            <span data-de="Entwickelt in Hamburg" data-en="Built in Hamburg">Entwickelt in Hamburg</span>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

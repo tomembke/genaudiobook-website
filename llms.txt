@@ -1,0 +1,46 @@
+# GenAudioBook
+
+> AI-powered audiobook generator for macOS. Convert EPUB, PDF and text documents into professional audiobooks using 5 local TTS engines. Runs 100% offline on Apple Silicon Macs.
+
+## What is GenAudioBook?
+
+GenAudioBook is a native macOS application that converts ebooks (EPUB, PDF, TXT, DOCX) into audiobooks using state-of-the-art AI text-to-speech engines. All processing happens locally on the user's Mac — no cloud, no API keys, no data leaves the device.
+
+## Key Features
+
+- 5 AI TTS Engines: Kokoro, F5-TTS, CosyVoice 2, MeloTTS, Chatterbox
+- 17+ Languages: German, English, French, Spanish, Italian, Portuguese, Japanese, Chinese, Korean, Russian, Dutch, Polish, Turkish, Czech, Arabic, Hungarian, Hindi, Swedish, Danish
+- Voice Cloning: Clone any voice with 5-30 seconds of reference audio (F5-TTS, CosyVoice 2, Chatterbox)
+- 100% Offline: All AI models run locally on Apple Silicon (M1/M2/M3/M4) using MPS acceleration
+- Multiple export formats: MP3, WAV, FLAC
+- Chapter-aware: Automatic chapter detection and structured output
+- Built-in text editor for pre-generation editing
+
+## Pricing
+
+- Free Trial: 24 hours of generation time, full feature access
+- Pro License: €5 one-time payment, lifetime access, no subscription
+
+## System Requirements
+
+- Apple Silicon Mac (M1, M2, M3, M4)
+- macOS 13 (Ventura) or later
+- 16 GB RAM recommended (8 GB minimum)
+- 2-8 GB storage depending on installed engines
+
+## Engine Comparison
+
+| Engine | Languages | Size | Voice Cloning | License | Best For |
+|--------|-----------|------|---------------|---------|----------|
+| Kokoro v1.0 | EN, JA, ZH | 0.3 GB | No | Apache 2.0 | Speed, long sessions |
+| F5-TTS | EN, DE, FR, ES, IT, PT, ZH, JA, KO, RU | 1.2 GB | Yes | MIT | Voice cloning, multilingual |
+| CosyVoice 2 | 13 languages | 2.0 GB | Yes | Apache 2.0 | Most natural voice |
+| MeloTTS | EN, ES, FR, ZH, JA, KO | 0.5 GB | No | MIT | Ultra-fast batch processing |
+| Chatterbox | EN | 1.5 GB | Yes | MIT | Best English quality |
+
+## Links
+
+- Website: https://genaudiobook.com
+- Buy Pro: https://tomember.gumroad.com/l/epdibx
+- Contact: emke.tom@gmail.com
+- Developer: Tom Emke, Hamburg, Germany
