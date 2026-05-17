@@ -93,19 +93,18 @@
             font-size: 15px; color: var(--txt); line-height: 1.6; margin-bottom: 0;
         }
 
-        /* ---- STEP VISUAL ---- */
-        .method-steps-visual {
+        /* ---- STEP CONTENT ---- */
+        .method-steps {
             padding: 0 36px 32px;
-            display: flex; flex-direction: column; gap: 20px;
+            display: flex; flex-direction: column; gap: 28px;
         }
-        .step-row {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-            align-items: center;
+        .step-block {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;
         }
-        .step-row.full { grid-template-columns: 1fr; }
-        .step-text {
-            display: flex; gap: 14px; align-items: flex-start;
-        }
+        .step-block.text-only { grid-template-columns: 1fr; }
+        .step-block.img-only { grid-template-columns: 1fr; }
+
+        .step-text { display: flex; gap: 14px; align-items: flex-start; }
         .step-dot {
             width: 28px; height: 28px; min-width: 28px; border-radius: 50%;
             background: var(--bg-input); border: 1px solid var(--border);
@@ -120,119 +119,20 @@
             color: var(--txt); font-weight: 600;
         }
 
-        /* ---- macOS MOCKUPS ---- */
-        .macos-mockup {
-            background: #1e1e28; border-radius: 12px; border: 1px solid var(--border);
-            overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        /* ---- SCREENSHOT IMAGES ---- */
+        .step-img {
+            border-radius: 12px; overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            border: 1px solid var(--border);
         }
-        .mockup-titlebar {
-            display: flex; align-items: center; gap: 7px;
-            padding: 10px 14px; background: #28283a; border-bottom: 1px solid var(--border);
-        }
-        .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
-        .mockup-dot.red { background: #ff5f57; }
-        .mockup-dot.yellow { background: #ffbd2e; }
-        .mockup-dot.green { background: #28ca41; }
-        .mockup-title {
-            flex: 1; text-align: center; font-size: 12px;
-            color: var(--txt); font-weight: 500; margin-right: 40px;
-        }
-        .mockup-body { padding: 24px; }
-
-        /* Gatekeeper warning mockup */
-        .gk-warning {
-            text-align: center; padding: 28px 24px;
-        }
-        .gk-icon {
-            width: 56px; height: 56px; margin: 0 auto 16px;
-            background: linear-gradient(135deg, #ffcc02, #ff9500);
-            border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            font-size: 32px; color: #fff; font-weight: 800;
-        }
-        .gk-warning h4 {
-            font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 8px; line-height: 1.4;
-        }
-        .gk-warning p { font-size: 12px; color: var(--txt); margin-bottom: 16px; }
-        .gk-btn {
-            display: block; width: 100%; padding: 8px; margin-bottom: 8px;
-            border-radius: 6px; border: 1px solid var(--border); background: var(--bg-input);
-            color: var(--txt); font-size: 13px; font-weight: 500; text-align: center;
-        }
-        .gk-btn.action { background: var(--accent); border-color: var(--accent); color: #fff; }
-
-        /* Settings mockup */
-        .settings-mockup .mockup-body { padding: 20px; }
-        .settings-row {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 14px 16px; border-radius: 8px; margin-bottom: 8px;
-            background: rgba(255,255,255,0.03); border: 1px solid transparent;
-        }
-        .settings-row.highlight {
-            border-color: var(--green-border);
-            background: rgba(52,211,153,0.06);
-        }
-        .settings-row .label { font-size: 13px; color: var(--txt); line-height: 1.4; }
-        .settings-row .label strong { color: #fff; display: block; font-size: 14px; margin-bottom: 2px; }
-        .settings-btn {
-            padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;
-            background: var(--accent); color: #fff; border: none; white-space: nowrap;
-        }
-        .settings-btn.allow { background: var(--green); color: #0a0a0f; }
-
-        /* Terminal mockup */
-        .terminal-mockup .mockup-titlebar { background: #1a1a24; }
-        .terminal-mockup .mockup-body { padding: 20px 22px; }
-        .terminal-line {
-            font-family: var(--mono); font-size: 14px; line-height: 1.8; color: var(--txt);
-        }
-        .terminal-line .prompt { color: var(--green); }
-        .terminal-line .cmd { color: #fff; }
-        .terminal-cursor {
-            display: inline-block; width: 8px; height: 16px;
-            background: var(--green); vertical-align: text-bottom;
-            animation: blink 1s infinite;
-        }
-        @keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
-
-        /* Context menu mockup */
-        .ctx-menu-mockup {
-            background: rgba(40,40,58,0.95); border-radius: 8px;
-            border: 1px solid var(--border); padding: 6px 0;
-            width: 200px; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-            backdrop-filter: blur(20px);
-        }
-        .ctx-item {
-            padding: 6px 16px; font-size: 13px; color: var(--txt);
-            display: flex; justify-content: space-between;
-        }
-        .ctx-item.highlight {
-            background: var(--accent); color: #fff; margin: 0 4px; border-radius: 4px;
-            padding: 6px 12px;
-        }
-        .ctx-separator { height: 1px; background: var(--border); margin: 4px 12px; }
-        .ctx-shortcut { color: var(--txt); font-size: 12px; }
-
-        /* Right-click area */
-        .rightclick-scene {
-            display: flex; gap: 20px; align-items: flex-start;
-            padding: 20px; justify-content: center;
-        }
-        .app-icon-mock {
-            width: 64px; height: 64px; border-radius: 14px;
-            background: linear-gradient(135deg, var(--accent), #7c3aed);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 11px; color: #fff; font-weight: 700; text-align: center;
-            line-height: 1.2; box-shadow: 0 4px 16px rgba(37,99,235,0.3);
+        .step-img img {
+            display: block; width: 100%; height: auto;
+            border-radius: 12px;
         }
 
-        /* Arrow indicator */
-        .arrow-indicator {
-            display: flex; align-items: center; gap: 8px;
-            padding: 8px 14px; background: var(--green-bg); border: 1px solid var(--green-border);
-            border-radius: 8px; margin-top: 12px;
-        }
-        .arrow-indicator svg { width: 16px; height: 16px; stroke: var(--green); fill: none; stroke-width: 2; }
-        .arrow-indicator span { font-size: 13px; font-weight: 600; color: var(--green); }
+        /* Language-aware image switching */
+        html[lang="de"] .lang-en { display: none !important; }
+        html[lang="en"] .lang-de { display: none !important; }
 
         /* ---- HELP FOOTER ---- */
         .help-footer {
@@ -245,10 +145,9 @@
 
         /* ---- RESPONSIVE ---- */
         @media (max-width: 700px) {
-            .step-row { grid-template-columns: 1fr; }
-            .method-top, .method-steps-visual { padding-left: 24px; padding-right: 24px; }
+            .step-block { grid-template-columns: 1fr; }
+            .method-top, .method-steps { padding-left: 24px; padding-right: 24px; }
             .why-box { padding: 28px 24px; }
-            .rightclick-scene { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -285,10 +184,10 @@
                 <span class="gradient-text" data-de="herunterladen" data-en="Download">herunterladen</span>
             </h1>
             <p data-de="Lade die App herunter, folge der kurzen Anleitung unten und dein erstes Hörbuch ist in Minuten fertig." data-en="Download the app, follow the short guide below, and your first audiobook will be ready in minutes.">Lade die App herunter, folge der kurzen Anleitung unten und dein erstes Hörbuch ist in Minuten fertig.</p>
-            <a href="https://github.com/tomembke/genaudiobook-releases/releases/download/v1.0.1/GenAudioBook_Pro.dmg" class="btn-primary" data-de="Download für macOS" data-en="Download for macOS">Download für macOS</a>
+            <a href="https://github.com/tomembke/genaudiobook-releases/releases/download/v1.0.2/GenAudioBook_Pro.dmg" class="btn-primary" data-de="Download für macOS" data-en="Download for macOS">Download für macOS</a>
             <div class="dl-meta">
-                <span>v1.0.1</span>
-                <span>333 MB</span>
+                <span>v1.0.2</span>
+                <span>380 MB</span>
                 <span>Apple Silicon (M1-M4)</span>
                 <span>macOS 13+</span>
             </div>
@@ -315,68 +214,34 @@
                     </div>
                     <p class="method-desc" data-de="Die einfachste Methode. macOS merkt sich deine Entscheidung, die Warnung kommt nie wieder." data-en="The easiest method. macOS remembers your decision, the warning never appears again.">Die einfachste Methode. macOS merkt sich deine Entscheidung, die Warnung kommt nie wieder.</p>
                 </div>
-                <div class="method-steps-visual">
+                <div class="method-steps">
 
-                    <div class="step-row">
+                    <!-- Step 1: Open DMG, see warning -->
+                    <div class="step-block">
                         <div class="step-text">
                             <div class="step-dot">1</div>
-                            <p data-de="Öffne die .dmg Datei und ziehe GenAudioBook in den <strong>Programme</strong>-Ordner. Starte per Doppelklick." data-en="Open the .dmg file and drag GenAudioBook to <strong>Applications</strong>. Launch by double-clicking.">Öffne die .dmg Datei und ziehe GenAudioBook in den <strong>Programme</strong>-Ordner. Starte per Doppelklick.</p>
+                            <p data-de="Öffne die .dmg Datei und ziehe GenAudioBook in den <strong>Programme</strong>-Ordner. Beim ersten Doppelklick erscheint diese Warnung. Klicke auf <strong>Abbrechen</strong> (nicht in den Papierkorb legen!)." data-en="Open the .dmg file and drag GenAudioBook to <strong>Applications</strong>. On first double-click, this warning appears. Click <strong>Cancel</strong> (don't move to trash!).">Öffne die .dmg Datei und ziehe GenAudioBook in den <strong>Programme</strong>-Ordner. Beim ersten Doppelklick erscheint diese Warnung. Klicke auf <strong>Abbrechen</strong> (nicht in den Papierkorb legen!).</p>
                         </div>
-                        <div class="macos-mockup">
-                            <div class="mockup-titlebar">
-                                <div class="mockup-dot red"></div>
-                                <div class="mockup-dot yellow"></div>
-                                <div class="mockup-dot green"></div>
-                            </div>
-                            <div class="gk-warning">
-                                <div class="gk-icon">!</div>
-                                <h4 data-de="&quot;AudioBookGen&quot; ist beschädigt und kann nicht geöffnet werden." data-en="&quot;AudioBookGen&quot; is damaged and can't be opened.">"AudioBookGen" ist beschädigt und kann nicht geöffnet werden.</h4>
-                                <p data-de="Safari hat diese Datei heute heruntergeladen." data-en="Safari downloaded this file today.">Safari hat diese Datei heute heruntergeladen.</p>
-                                <div class="gk-btn" data-de="In den Papierkorb legen" data-en="Move to Trash">In den Papierkorb legen</div>
-                                <div class="gk-btn action" data-de="Abbrechen" data-en="Cancel">Abbrechen</div>
-                                <div class="arrow-indicator">
-                                    <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path></svg>
-                                    <span data-de="Hier auf Abbrechen klicken" data-en="Click Cancel here">Hier auf Abbrechen klicken</span>
-                                </div>
-                            </div>
+                        <div class="step-img">
+                            <img class="lang-de" src="images/gatekeeper-warning-de.png" alt="macOS Gatekeeper Warnung" loading="lazy">
+                            <img class="lang-en" src="images/gatekeeper-warning-en.png" alt="macOS Gatekeeper Warning" loading="lazy">
                         </div>
                     </div>
 
-                    <div class="step-row">
+                    <!-- Step 2: Open System Settings -->
+                    <div class="step-block">
                         <div class="step-text">
                             <div class="step-dot">2</div>
-                            <p data-de="Öffne <strong>Systemeinstellungen → Datenschutz &amp; Sicherheit</strong>. Scrolle nach unten bis du die blockierte App siehst." data-en="Open <strong>System Settings → Privacy &amp; Security</strong>. Scroll down until you see the blocked app.">Öffne <strong>Systemeinstellungen → Datenschutz &amp; Sicherheit</strong>. Scrolle nach unten bis du die blockierte App siehst.</p>
+                            <p data-de="Öffne <strong>Systemeinstellungen → Datenschutz &amp; Sicherheit</strong>. Scrolle nach unten. Du siehst, dass die App blockiert wurde. Klicke auf <strong>Dennoch öffnen</strong>." data-en="Open <strong>System Settings → Privacy &amp; Security</strong>. Scroll down. You'll see the app was blocked. Click <strong>Open Anyway</strong>.">Öffne <strong>Systemeinstellungen → Datenschutz &amp; Sicherheit</strong>. Scrolle nach unten. Du siehst, dass die App blockiert wurde. Klicke auf <strong>Dennoch öffnen</strong>.</p>
                         </div>
-                        <div class="macos-mockup settings-mockup">
-                            <div class="mockup-titlebar">
-                                <div class="mockup-dot red"></div>
-                                <div class="mockup-dot yellow"></div>
-                                <div class="mockup-dot green"></div>
-                                <div class="mockup-title" data-de="Datenschutz & Sicherheit" data-en="Privacy & Security">Datenschutz & Sicherheit</div>
-                            </div>
-                            <div class="mockup-body">
-                                <div class="settings-row">
-                                    <div class="label">
-                                        <strong data-de="App Store und verifizierte Entwickler" data-en="App Store and identified developers">App Store und verifizierte Entwickler</strong>
-                                        <span data-de="Apps erlauben von:" data-en="Allow apps from:">Apps erlauben von:</span>
-                                    </div>
-                                </div>
-                                <div class="settings-row highlight">
-                                    <div class="label">
-                                        <strong data-de="&quot;AudioBookGen&quot; wurde blockiert" data-en="&quot;AudioBookGen&quot; was blocked">"AudioBookGen" wurde blockiert</strong>
-                                        <span data-de="Die Verwendung wurde blockiert, da die App nicht von einem verifizierten Entwickler stammt." data-en="Use was blocked because it is not from an identified developer.">Die Verwendung wurde blockiert, da die App nicht von einem verifizierten Entwickler stammt.</span>
-                                    </div>
-                                    <button class="settings-btn allow" data-de="Dennoch öffnen" data-en="Open Anyway">Dennoch öffnen</button>
-                                </div>
-                                <div class="arrow-indicator">
-                                    <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path></svg>
-                                    <span data-de="Auf &quot;Dennoch öffnen&quot; klicken" data-en="Click &quot;Open Anyway&quot;">Auf "Dennoch öffnen" klicken</span>
-                                </div>
-                            </div>
+                        <div class="step-img">
+                            <img class="lang-de" src="images/system-settings-de.png" alt="macOS Systemeinstellungen Datenschutz und Sicherheit" loading="lazy">
+                            <img class="lang-en" src="images/system-settings-en.png" alt="macOS System Settings Privacy and Security" loading="lazy">
                         </div>
                     </div>
 
-                    <div class="step-row full">
+                    <!-- Step 3: Enter password -->
+                    <div class="step-block text-only">
                         <div class="step-text">
                             <div class="step-dot">3</div>
                             <p data-de="Gib dein <strong>Mac-Passwort</strong> ein. Fertig. Die App startet und die Warnung erscheint nie wieder." data-en="Enter your <strong>Mac password</strong>. Done. The app launches and the warning never appears again.">Gib dein <strong>Mac-Passwort</strong> ein. Fertig. Die App startet und die Warnung erscheint nie wieder.</p>
@@ -394,26 +259,18 @@
                     </div>
                     <p class="method-desc" data-de="Funktioniert bei den meisten macOS-Versionen. Falls kein &quot;Öffnen&quot;-Button erscheint, nutze Methode 1 oder 3." data-en="Works on most macOS versions. If no &quot;Open&quot; button appears, use Method 1 or 3.">Funktioniert bei den meisten macOS-Versionen. Falls kein "Öffnen"-Button erscheint, nutze Methode 1 oder 3.</p>
                 </div>
-                <div class="method-steps-visual">
-                    <div class="step-row">
+                <div class="method-steps">
+                    <div class="step-block">
                         <div class="step-text">
                             <div class="step-dot">1</div>
-                            <p data-de="<strong>Rechtsklick</strong> (oder <span class='key'>Ctrl</span> + Klick) auf die App im Programme-Ordner." data-en="<strong>Right-click</strong> (or <span class='key'>Ctrl</span> + Click) the app in Applications."><strong>Rechtsklick</strong> (oder <span class="key">Ctrl</span> + Klick) auf die App im Programme-Ordner.</p>
+                            <p data-de="<strong>Rechtsklick</strong> (oder <span class='key'>Ctrl</span> + Klick) auf die App im Programme-Ordner. Wähle im Kontextmenü <strong>Öffnen</strong>." data-en="<strong>Right-click</strong> (or <span class='key'>Ctrl</span> + Click) the app in Applications. Select <strong>Open</strong> from the context menu."><strong>Rechtsklick</strong> (oder <span class="key">Ctrl</span> + Klick) auf die App im Programme-Ordner. Wähle im Kontextmenü <strong>Öffnen</strong>.</p>
                         </div>
-                        <div class="rightclick-scene">
-                            <div class="app-icon-mock">Gen<br>Audio<br>Book</div>
-                            <div class="ctx-menu-mockup">
-                                <div class="ctx-item highlight" data-de="Öffnen" data-en="Open">Öffnen</div>
-                                <div class="ctx-separator"></div>
-                                <div class="ctx-item" data-de="Informationen" data-en="Get Info">Informationen</div>
-                                <div class="ctx-item" data-de="Umbenennen" data-en="Rename">Umbenennen</div>
-                                <div class="ctx-item" data-de="Komprimieren" data-en="Compress">Komprimieren</div>
-                                <div class="ctx-separator"></div>
-                                <div class="ctx-item" data-de="In den Papierkorb legen" data-en="Move to Trash">In den Papierkorb legen</div>
-                            </div>
+                        <div class="step-img">
+                            <img class="lang-de" src="images/rightclick-de.png" alt="macOS Rechtsklick Kontextmenü" loading="lazy">
+                            <img class="lang-en" src="images/rightclick-en.png" alt="macOS Right-click Context Menu" loading="lazy">
                         </div>
                     </div>
-                    <div class="step-row full">
+                    <div class="step-block text-only">
                         <div class="step-text">
                             <div class="step-dot">2</div>
                             <p data-de="Im Dialog auf <strong>&quot;Öffnen&quot;</strong> klicken. Ab jetzt startet die App ganz normal per Doppelklick." data-en="Click <strong>&quot;Open&quot;</strong> in the dialog. From now on, the app launches normally via double-click.">Im Dialog auf <strong>"Öffnen"</strong> klicken. Ab jetzt startet die App ganz normal per Doppelklick.</p>
@@ -431,33 +288,20 @@
                     </div>
                     <p class="method-desc" data-de="Falls Methode 1 und 2 nicht funktionieren. Kopiere einen Befehl, fertig." data-en="If methods 1 and 2 don't work. Copy one command, done.">Falls Methode 1 und 2 nicht funktionieren. Kopiere einen Befehl, fertig.</p>
                 </div>
-                <div class="method-steps-visual">
-                    <div class="step-row">
+                <div class="method-steps">
+                    <div class="step-block">
                         <div class="step-text">
                             <div class="step-dot">1</div>
-                            <p data-de="Öffne <strong>Terminal</strong> (Spotlight: <span class='key'>Cmd</span> + <span class='key'>Leertaste</span>, dann &quot;Terminal&quot; eingeben)." data-en="Open <strong>Terminal</strong> (Spotlight: <span class='key'>Cmd</span> + <span class='key'>Space</span>, then type &quot;Terminal&quot;).">Öffne <strong>Terminal</strong> (Spotlight: <span class="key">Cmd</span> + <span class="key">Leertaste</span>, dann "Terminal" eingeben).</p>
+                            <p data-de="Öffne <strong>Terminal</strong> (Spotlight: <span class='key'>Cmd</span> + <span class='key'>Leertaste</span>, dann &quot;Terminal&quot; eingeben). Kopiere diesen Befehl und drücke <span class='key'>Enter</span>:" data-en="Open <strong>Terminal</strong> (Spotlight: <span class='key'>Cmd</span> + <span class='key'>Space</span>, then type &quot;Terminal&quot;). Copy this command and press <span class='key'>Enter</span>:">Öffne <strong>Terminal</strong> (Spotlight: <span class="key">Cmd</span> + <span class="key">Leertaste</span>, dann "Terminal" eingeben). Kopiere diesen Befehl und drücke <span class="key">Enter</span>:</p>
                         </div>
-                        <div class="macos-mockup terminal-mockup">
-                            <div class="mockup-titlebar">
-                                <div class="mockup-dot red"></div>
-                                <div class="mockup-dot yellow"></div>
-                                <div class="mockup-dot green"></div>
-                                <div class="mockup-title">Terminal</div>
-                            </div>
-                            <div class="mockup-body">
-                                <div class="terminal-line">
-                                    <span class="prompt">~ %</span> <span class="cmd">xattr -cr /Applications/AudioBookGen.app</span>
-                                </div>
-                                <div class="terminal-line">
-                                    <span class="prompt">~ %</span> <span class="terminal-cursor"></span>
-                                </div>
-                            </div>
+                        <div class="step-img">
+                            <img src="images/terminal-xattr.png" alt="Terminal xattr Befehl" loading="lazy">
                         </div>
                     </div>
-                    <div class="step-row full">
+                    <div class="step-block text-only">
                         <div class="step-text">
                             <div class="step-dot">2</div>
-                            <p data-de="Kopiere den Befehl, drücke <span class='key'>Enter</span>. Fertig. Die App startet jetzt normal per Doppelklick." data-en="Copy the command, press <span class='key'>Enter</span>. Done. The app now launches normally via double-click.">Kopiere den Befehl, drücke <span class="key">Enter</span>. Fertig. Die App startet jetzt normal per Doppelklick.</p>
+                            <p data-de="Fertig. Die App startet jetzt normal per Doppelklick." data-en="Done. The app now launches normally via double-click.">Fertig. Die App startet jetzt normal per Doppelklick.</p>
                         </div>
                     </div>
                 </div>
@@ -513,6 +357,6 @@
     </div>
 </footer>
 
-<script src="../script.js?v=2"></script>
+<script src="../script.js?v=3"></script>
 </body>
 </html>
