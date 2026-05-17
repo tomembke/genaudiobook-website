@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAudioBook — Installation auf macOS</title>
+    <meta name="description" content="Installationsanleitung für GenAudioBook auf macOS. So öffnest du die App trotz Gatekeeper-Warnung.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .install-page { padding-top: 130px; padding-bottom: 80px; min-height: 100vh; }
+
+        /* ---- HERO ---- */
+        .dl-hero { text-align: center; margin-bottom: 72px; }
+        .dl-hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800; color: #fff; letter-spacing: -1.5px;
+            margin-bottom: 20px; line-height: 1.1;
+        }
+        .dl-hero .gradient-text {
+            background: linear-gradient(135deg, var(--accent-light), var(--green));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .dl-hero p {
+            font-size: 18px; color: var(--txt); max-width: 560px;
+            margin: 0 auto 36px; line-height: 1.7;
+        }
+        .dl-hero .btn-primary { font-size: 18px; padding: 18px 40px; }
+        .dl-hero .dl-meta {
+            margin-top: 16px; font-size: 14px; color: var(--txt);
+            display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+        }
+        .dl-hero .dl-meta span { display: inline-flex; align-items: center; gap: 6px; }
+
+        /* ---- WHY BOX ---- */
+        .why-box {
+            max-width: 760px; margin: 0 auto 80px;
+            background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(52,211,153,0.04));
+            border: 1px solid var(--accent-border); border-radius: var(--radius);
+            padding: 40px 44px; position: relative; overflow: hidden;
+        }
+        .why-box::before {
+            content: ''; position: absolute; top: -60px; right: -60px;
+            width: 160px; height: 160px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(37,99,235,0.12), transparent 70%);
+        }
+        .why-box h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+        .why-box p { font-size: 15px; color: var(--txt); line-height: 1.8; }
+
+        /* ---- STEPS SECTION ---- */
+        .steps-section { max-width: 800px; margin: 0 auto; }
+        .steps-section > h2 {
+            font-size: clamp(28px, 3.5vw, 40px); font-weight: 800;
+            color: #fff; text-align: center; margin-bottom: 16px; letter-spacing: -1px;
+        }
+        .steps-section > p.steps-sub {
+            text-align: center; font-size: 16px; color: var(--txt);
+            margin-bottom: 48px; max-width: 500px; margin-left: auto; margin-right: auto;
+        }
+
+        /* ---- METHOD CARD ---- */
+        .method-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); margin-bottom: 32px;
+            overflow: hidden; transition: border-color 0.3s;
+        }
+        .method-card:hover { border-color: var(--border-hover); }
+        .method-card.recommended { border-color: var(--green-border); }
+        .method-card.recommended .method-top { background: linear-gradient(135deg, rgba(52,211,153,0.08), transparent); }
+
+        .method-top { padding: 32px 36px 28px; }
+        .method-label {
+            display: flex; align-items: center; gap: 14px; margin-bottom: 10px;
+        }
+        .method-num {
+            width: 36px; height: 36px; min-width: 36px; border-radius: 10px;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 16px; font-weight: 800;
+            background: var(--accent-bg); border: 1px solid var(--accent-border); color: var(--accent-light);
+        }
+        .method-card.recommended .method-num {
+            background: var(--green-bg); border-color: var(--green-border); color: var(--green);
+        }
+        .method-label h3 { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+        .method-badge {
+            margin-left: auto; font-size: 11px; font-weight: 700; padding: 4px 12px;
+            border-radius: 100px; text-transform: uppercase; letter-spacing: 0.8px;
+            background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border);
+        }
+        .method-desc {
+            font-size: 15px; color: var(--txt); line-height: 1.6; margin-bottom: 0;
+        }
+
+        /* ---- STEP VISUAL ---- */
+        .method-steps-visual {
+            padding: 0 36px 32px;
+            display: flex; flex-direction: column; gap: 20px;
+        }
+        .step-row {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+            align-items: center;
+        }
+        .step-row.full { grid-template-columns: 1fr; }
+        .step-text {
+            display: flex; gap: 14px; align-items: flex-start;
+        }
+        .step-dot {
+            width: 28px; height: 28px; min-width: 28px; border-radius: 50%;
+            background: var(--bg-input); border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700; color: var(--txt); margin-top: 1px;
+        }
+        .step-text p { font-size: 15px; color: var(--txt); line-height: 1.65; }
+        .step-text p strong { color: #fff; }
+        .step-text p .key {
+            display: inline-block; background: var(--bg-input); border: 1px solid var(--border);
+            border-radius: 4px; padding: 1px 7px; font-size: 13px; font-family: var(--mono);
+            color: var(--txt); font-weight: 600;
+        }
+
+        /* ---- macOS MOCKUPS ---- */
+        .macos-mockup {
+            background: #1e1e28; border-radius: 12px; border: 1px solid var(--border);
+            overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+        .mockup-titlebar {
+            display: flex; align-items: center; gap: 7px;
+            padding: 10px 14px; background: #28283a; border-bottom: 1px solid var(--border);
+        }
+        .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .mockup-dot.red { background: #ff5f57; }
+        .mockup-dot.yellow { background: #ffbd2e; }
+        .mockup-dot.green { background: #28ca41; }
+        .mockup-title {
+            flex: 1; text-align: center; font-size: 12px;
+            color: var(--txt); font-weight: 500; margin-right: 40px;
+        }
+        .mockup-body { padding: 24px; }
+
+        /* Gatekeeper warning mockup */
+        .gk-warning {
+            text-align: center; padding: 28px 24px;
+        }
+        .gk-icon {
+            width: 56px; height: 56px; margin: 0 auto 16px;
+            background: linear-gradient(135deg, #ffcc02, #ff9500);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 32px; color: #fff; font-weight: 800;
+        }
+        .gk-warning h4 {
+            font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 8px; line-height: 1.4;
+        }
+        .gk-warning p { font-size: 12px; color: var(--txt); margin-bottom: 16px; }
+        .gk-btn {
+            display: block; width: 100%; padding: 8px; margin-bottom: 8px;
+            border-radius: 6px; border: 1px solid var(--border); background: var(--bg-input);
+            color: var(--txt); font-size: 13px; font-weight: 500; text-align: center;
+        }
+        .gk-btn.action { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+        /* Settings mockup */
+        .settings-mockup .mockup-body { padding: 20px; }
+        .settings-row {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 16px; border-radius: 8px; margin-bottom: 8px;
+            background: rgba(255,255,255,0.03); border: 1px solid transparent;
+        }
+        .settings-row.highlight {
+            border-color: var(--green-border);
+            background: rgba(52,211,153,0.06);
+        }
+        .settings-row .label { font-size: 13px; color: var(--txt); line-height: 1.4; }
+        .settings-row .label strong { color: #fff; display: block; font-size: 14px; margin-bottom: 2px; }
+        .settings-btn {
+            padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;
+            background: var(--accent); color: #fff; border: none; white-space: nowrap;
+        }
+        .settings-btn.allow { background: var(--green); color: #0a0a0f; }
+
+        /* Terminal mockup */
+        .terminal-mockup .mockup-titlebar { background: #1a1a24; }
+        .terminal-mockup .mockup-body { padding: 20px 22px; }
+        .terminal-line {
+            font-family: var(--mono); font-size: 14px; line-height: 1.8; color: var(--txt);
+        }
+        .terminal-line .prompt { color: var(--green); }
+        .terminal-line .cmd { color: #fff; }
+        .terminal-cursor {
+            display: inline-block; width: 8px; height: 16px;
+            background: var(--green); vertical-align: text-bottom;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
+
+        /* Context menu mockup */
+        .ctx-menu-mockup {
+            background: rgba(40,40,58,0.95); border-radius: 8px;
+            border: 1px solid var(--border); padding: 6px 0;
+            width: 200px; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            backdrop-filter: blur(20px);
+        }
+        .ctx-item {
+            padding: 6px 16px; font-size: 13px; color: var(--txt);
+            display: flex; justify-content: space-between;
+        }
+        .ctx-item.highlight {
+            background: var(--accent); color: #fff; margin: 0 4px; border-radius: 4px;
+            padding: 6px 12px;
+        }
+        .ctx-separator { height: 1px; background: var(--border); margin: 4px 12px; }
+        .ctx-shortcut { color: var(--txt); font-size: 12px; }
+
+        /* Right-click area */
+        .rightclick-scene {
+            display: flex; gap: 20px; align-items: flex-start;
+            padding: 20px; justify-content: center;
+        }
+        .app-icon-mock {
+            width: 64px; height: 64px; border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent), #7c3aed);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; color: #fff; font-weight: 700; text-align: center;
+            line-height: 1.2; box-shadow: 0 4px 16px rgba(37,99,235,0.3);
+        }
+
+        /* Arrow indicator */
+        .arrow-indicator {
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 14px; background: var(--green-bg); border: 1px solid var(--green-border);
+            border-radius: 8px; margin-top: 12px;
+        }
+        .arrow-indicator svg { width: 16px; height: 16px; stroke: var(--green); fill: none; stroke-width: 2; }
+        .arrow-indicator span { font-size: 13px; font-weight: 600; color: var(--green); }
+
+        /* ---- HELP FOOTER ---- */
+        .help-footer {
+            max-width: 760px; margin: 56px auto 0; text-align: center;
+            padding: 36px 40px;
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+        }
+        .help-footer h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .help-footer p { font-size: 15px; color: var(--txt); line-height: 1.7; }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 700px) {
+            .step-row { grid-template-columns: 1fr; }
+            .method-top, .method-steps-visual { padding-left: 24px; padding-right: 24px; }
+            .why-box { padding: 28px 24px; }
+            .rightclick-scene { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="container">
+        <a href="/" class="nav-logo">GenAudioBook</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/#features" data-de="Features" data-en="Features">Features</a></li>
+            <li><a href="/#engines" data-de="KI Engines" data-en="AI Engines">KI Engines</a></li>
+            <li><a href="/#pricing" data-de="Preise" data-en="Pricing">Preise</a></li>
+            <li><a href="/#faq" data-de="FAQ" data-en="FAQ">FAQ</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="lang-toggle">
+                <button id="langDe" class="active" onclick="setLang('de')">DE</button>
+                <button id="langEn" onclick="setLang('en')">EN</button>
+            </div>
+            <a href="https://tomembke.gumroad.com/l/genaudiobook" class="btn-nav-cta" data-de="Pro kaufen — 5 €" data-en="Buy Pro — €5">Pro kaufen — 5 €</a>
+            <button class="nav-hamburger" id="navHamburger" onclick="toggleMobileNav()">☰</button>
+        </div>
+    </div>
+</nav>
+
+<div class="install-page">
+    <div class="container">
+
+        <!-- ====== DOWNLOAD HERO ====== -->
+        <div class="dl-hero">
+            <h1>
+                <span data-de="GenAudioBook" data-en="GenAudioBook">GenAudioBook</span><br>
+                <span class="gradient-text" data-de="herunterladen" data-en="Download">herunterladen</span>
+            </h1>
+            <p data-de="Lade die App herunter, folge der kurzen Anleitung unten und dein erstes Hörbuch ist in Minuten fertig." data-en="Download the app, follow the short guide below, and your first audiobook will be ready in minutes.">Lade die App herunter, folge der kurzen Anleitung unten und dein erstes Hörbuch ist in Minuten fertig.</p>
+            <a href="https://github.com/tomembke/genaudiobook-releases/releases/download/v1.0.1/GenAudioBook_Pro.dmg" class="btn-primary" data-de="Download für macOS" data-en="Download for macOS">Download für macOS</a>
+            <div class="dl-meta">
+                <span>v1.0.1</span>
+                <span>333 MB</span>
+                <span>Apple Silicon (M1-M4)</span>
+                <span>macOS 13+</span>
+            </div>
+        </div>
+
+        <!-- ====== WHY BOX ====== -->
+        <div class="why-box">
+            <h2 data-de="Warum zeigt macOS eine Warnung?" data-en="Why does macOS show a warning?">Warum zeigt macOS eine Warnung?</h2>
+            <p data-de="GenAudioBook ist ein kleines Indie-Projekt und wird nicht über den App Store vertrieben. Apple verlangt $99 pro Jahr für ein Entwicklerzertifikat. Bei einem App-Preis von 5 € ist das aktuell nicht drin. macOS blockiert deshalb beim ersten Start Apps, die es nicht kennt. Das ist eine reine Sicherheitswarnung. Die App ist sicher und Open-Source-basiert. Mit einer der drei Methoden unten umgehst du die Warnung in unter 30 Sekunden." data-en="GenAudioBook is a small indie project and is not distributed through the App Store. Apple charges $99 per year for a developer certificate. At an app price of €5, that's not feasible right now. macOS therefore blocks apps it doesn't recognize on first launch. This is purely a security precaution. The app is safe and open-source-based. Use one of the three methods below to bypass the warning in under 30 seconds.">GenAudioBook ist ein kleines Indie-Projekt und wird nicht über den App Store vertrieben. Apple verlangt $99 pro Jahr für ein Entwicklerzertifikat. Bei einem App-Preis von 5 € ist das aktuell nicht drin. macOS blockiert deshalb beim ersten Start Apps, die es nicht kennt. Das ist eine reine Sicherheitswarnung. Die App ist sicher und Open-Source-basiert. Mit einer der drei Methoden unten umgehst du die Warnung in unter 30 Sekunden.</p>
+        </div>
+
+        <!-- ====== INSTALLATION STEPS ====== -->
+        <div class="steps-section">
+            <h2 data-de="Installation in 30 Sekunden" data-en="Installation in 30 Seconds">Installation in 30 Sekunden</h2>
+            <p class="steps-sub" data-de="Drei Wege, die App zu starten. Wähle den, der dir am besten passt." data-en="Three ways to launch the app. Pick whichever works best for you.">Drei Wege, die App zu starten. Wähle den, der dir am besten passt.</p>
+
+            <!-- ===== METHOD 1: System Settings ===== -->
+            <div class="method-card recommended">
+                <div class="method-top">
+                    <div class="method-label">
+                        <div class="method-num">1</div>
+                        <h3 data-de="Systemeinstellungen" data-en="System Settings">Systemeinstellungen</h3>
+                        <span class="method-badge" data-de="Empfohlen" data-en="Recommended">Empfohlen</span>
+                    </div>
+                    <p class="method-desc" data-de="Die einfachste Methode. macOS merkt sich deine Entscheidung, die Warnung kommt nie wieder." data-en="The easiest method. macOS remembers your decision, the warning never appears again.">Die einfachste Methode. macOS merkt sich deine Entscheidung, die Warnung kommt nie wieder.</p>
+                </div>
+                <div class="method-steps-visual">
+
+                    <div class="step-row">
+                        <div class="step-text">
+                            <div class="step-dot">1</div>
+                            <p data-de="Öffne die .dmg Datei und ziehe GenAudioBook in den <strong>Programme</strong>-Ordner. Starte per Doppelklick." data-en="Open the .dmg file and drag GenAudioBook to <strong>Applications</strong>. Launch by double-clicking.">Öffne die .dmg Datei und ziehe GenAudioBook in den <strong>Programme</strong>-Ordner. Starte per Doppelklick.</p>
+                        </div>
+                        <div class="macos-mockup">
+                            <div class="mockup-titlebar">
+                                <div class="mockup-dot red"></div>
+                                <div class="mockup-dot yellow"></div>
+                                <div class="mockup-dot green"></div>
+                            </div>
+                            <div class="gk-warning">
+                                <div class="gk-icon">!</div>
+                                <h4 data-de="&quot;AudioBookGen&quot; ist beschädigt und kann nicht geöffnet werden." data-en="&quot;AudioBookGen&quot; is damaged and can't be opened.">"AudioBookGen" ist beschädigt und kann nicht geöffnet werden.</h4>
+                                <p data-de="Safari hat diese Datei heute heruntergeladen." data-en="Safari downloaded this file today.">Safari hat diese Datei heute heruntergeladen.</p>
+                                <div class="gk-btn" data-de="In den Papierkorb legen" data-en="Move to Trash">In den Papierkorb legen</div>
+                                <div class="gk-btn action" data-de="Abbrechen" data-en="Cancel">Abbrechen</div>
+                                <div class="arrow-indicator">
+                                    <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path></svg>
+                                    <span data-de="Hier auf Abbrechen klicken" data-en="Click Cancel here">Hier auf Abbrechen klicken</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-row">
+                        <div class="step-text">
+                            <div class="step-dot">2</div>
+                            <p data-de="Öffne <strong>Systemeinstellungen → Datenschutz &amp; Sicherheit</strong>. Scrolle nach unten bis du die blockierte App siehst." data-en="Open <strong>System Settings → Privacy &amp; Security</strong>. Scroll down until you see the blocked app.">Öffne <strong>Systemeinstellungen → Datenschutz &amp; Sicherheit</strong>. Scrolle nach unten bis du die blockierte App siehst.</p>
+                        </div>
+                        <div class="macos-mockup settings-mockup">
+                            <div class="mockup-titlebar">
+                                <div class="mockup-dot red"></div>
+                                <div class="mockup-dot yellow"></div>
+                                <div class="mockup-dot green"></div>
+                                <div class="mockup-title" data-de="Datenschutz & Sicherheit" data-en="Privacy & Security">Datenschutz & Sicherheit</div>
+                            </div>
+                            <div class="mockup-body">
+                                <div class="settings-row">
+                                    <div class="label">
+                                        <strong data-de="App Store und verifizierte Entwickler" data-en="App Store and identified developers">App Store und verifizierte Entwickler</strong>
+                                        <span data-de="Apps erlauben von:" data-en="Allow apps from:">Apps erlauben von:</span>
+                                    </div>
+                                </div>
+                                <div class="settings-row highlight">
+                                    <div class="label">
+                                        <strong data-de="&quot;AudioBookGen&quot; wurde blockiert" data-en="&quot;AudioBookGen&quot; was blocked">"AudioBookGen" wurde blockiert</strong>
+                                        <span data-de="Die Verwendung wurde blockiert, da die App nicht von einem verifizierten Entwickler stammt." data-en="Use was blocked because it is not from an identified developer.">Die Verwendung wurde blockiert, da die App nicht von einem verifizierten Entwickler stammt.</span>
+                                    </div>
+                                    <button class="settings-btn allow" data-de="Dennoch öffnen" data-en="Open Anyway">Dennoch öffnen</button>
+                                </div>
+                                <div class="arrow-indicator">
+                                    <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path></svg>
+                                    <span data-de="Auf &quot;Dennoch öffnen&quot; klicken" data-en="Click &quot;Open Anyway&quot;">Auf "Dennoch öffnen" klicken</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-row full">
+                        <div class="step-text">
+                            <div class="step-dot">3</div>
+                            <p data-de="Gib dein <strong>Mac-Passwort</strong> ein. Fertig. Die App startet und die Warnung erscheint nie wieder." data-en="Enter your <strong>Mac password</strong>. Done. The app launches and the warning never appears again.">Gib dein <strong>Mac-Passwort</strong> ein. Fertig. Die App startet und die Warnung erscheint nie wieder.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== METHOD 2: Right-click ===== -->
+            <div class="method-card">
+                <div class="method-top">
+                    <div class="method-label">
+                        <div class="method-num">2</div>
+                        <h3 data-de="Rechtsklick → Öffnen" data-en="Right-Click → Open">Rechtsklick → Öffnen</h3>
+                    </div>
+                    <p class="method-desc" data-de="Funktioniert bei den meisten macOS-Versionen. Falls kein &quot;Öffnen&quot;-Button erscheint, nutze Methode 1 oder 3." data-en="Works on most macOS versions. If no &quot;Open&quot; button appears, use Method 1 or 3.">Funktioniert bei den meisten macOS-Versionen. Falls kein "Öffnen"-Button erscheint, nutze Methode 1 oder 3.</p>
+                </div>
+                <div class="method-steps-visual">
+                    <div class="step-row">
+                        <div class="step-text">
+                            <div class="step-dot">1</div>
+                            <p data-de="<strong>Rechtsklick</strong> (oder <span class='key'>Ctrl</span> + Klick) auf die App im Programme-Ordner." data-en="<strong>Right-click</strong> (or <span class='key'>Ctrl</span> + Click) the app in Applications."><strong>Rechtsklick</strong> (oder <span class="key">Ctrl</span> + Klick) auf die App im Programme-Ordner.</p>
+                        </div>
+                        <div class="rightclick-scene">
+                            <div class="app-icon-mock">Gen<br>Audio<br>Book</div>
+                            <div class="ctx-menu-mockup">
+                                <div class="ctx-item highlight" data-de="Öffnen" data-en="Open">Öffnen</div>
+                                <div class="ctx-separator"></div>
+                                <div class="ctx-item" data-de="Informationen" data-en="Get Info">Informationen</div>
+                                <div class="ctx-item" data-de="Umbenennen" data-en="Rename">Umbenennen</div>
+                                <div class="ctx-item" data-de="Komprimieren" data-en="Compress">Komprimieren</div>
+                                <div class="ctx-separator"></div>
+                                <div class="ctx-item" data-de="In den Papierkorb legen" data-en="Move to Trash">In den Papierkorb legen</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-row full">
+                        <div class="step-text">
+                            <div class="step-dot">2</div>
+                            <p data-de="Im Dialog auf <strong>&quot;Öffnen&quot;</strong> klicken. Ab jetzt startet die App ganz normal per Doppelklick." data-en="Click <strong>&quot;Open&quot;</strong> in the dialog. From now on, the app launches normally via double-click.">Im Dialog auf <strong>"Öffnen"</strong> klicken. Ab jetzt startet die App ganz normal per Doppelklick.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== METHOD 3: Terminal ===== -->
+            <div class="method-card">
+                <div class="method-top">
+                    <div class="method-label">
+                        <div class="method-num">3</div>
+                        <h3 data-de="Terminal-Befehl" data-en="Terminal Command">Terminal-Befehl</h3>
+                    </div>
+                    <p class="method-desc" data-de="Falls Methode 1 und 2 nicht funktionieren. Kopiere einen Befehl, fertig." data-en="If methods 1 and 2 don't work. Copy one command, done.">Falls Methode 1 und 2 nicht funktionieren. Kopiere einen Befehl, fertig.</p>
+                </div>
+                <div class="method-steps-visual">
+                    <div class="step-row">
+                        <div class="step-text">
+                            <div class="step-dot">1</div>
+                            <p data-de="Öffne <strong>Terminal</strong> (Spotlight: <span class='key'>Cmd</span> + <span class='key'>Leertaste</span>, dann &quot;Terminal&quot; eingeben)." data-en="Open <strong>Terminal</strong> (Spotlight: <span class='key'>Cmd</span> + <span class='key'>Space</span>, then type &quot;Terminal&quot;).">Öffne <strong>Terminal</strong> (Spotlight: <span class="key">Cmd</span> + <span class="key">Leertaste</span>, dann "Terminal" eingeben).</p>
+                        </div>
+                        <div class="macos-mockup terminal-mockup">
+                            <div class="mockup-titlebar">
+                                <div class="mockup-dot red"></div>
+                                <div class="mockup-dot yellow"></div>
+                                <div class="mockup-dot green"></div>
+                                <div class="mockup-title">Terminal</div>
+                            </div>
+                            <div class="mockup-body">
+                                <div class="terminal-line">
+                                    <span class="prompt">~ %</span> <span class="cmd">xattr -cr /Applications/AudioBookGen.app</span>
+                                </div>
+                                <div class="terminal-line">
+                                    <span class="prompt">~ %</span> <span class="terminal-cursor"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-row full">
+                        <div class="step-text">
+                            <div class="step-dot">2</div>
+                            <p data-de="Kopiere den Befehl, drücke <span class='key'>Enter</span>. Fertig. Die App startet jetzt normal per Doppelklick." data-en="Copy the command, press <span class='key'>Enter</span>. Done. The app now launches normally via double-click.">Kopiere den Befehl, drücke <span class="key">Enter</span>. Fertig. Die App startet jetzt normal per Doppelklick.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== HELP FOOTER ====== -->
+        <div class="help-footer">
+            <h3 data-de="Klappt trotzdem nicht?" data-en="Still not working?">Klappt trotzdem nicht?</h3>
+            <p data-de="Schreib mir eine Mail an emke.tom@gmail.com, ich helfe dir persönlich weiter." data-en="Send me an email at emke.tom@gmail.com, I'll help you personally.">Schreib mir eine Mail an <a href="mailto:emke.tom@gmail.com">emke.tom@gmail.com</a>, ich helfe dir persönlich weiter.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>GenAudioBook</h3>
+                <p data-de="KI-Hörbuch Generator für macOS. Fünf Engines, 17+ Sprachen, Voice Cloning. 100% offline und privat. Entwickelt in Hamburg." data-en="AI audiobook generator for macOS. Five engines, 17+ languages, voice cloning. 100% offline and private. Developed in Hamburg.">KI-Hörbuch Generator für macOS. Fünf Engines, 17+ Sprachen, Voice Cloning. 100% offline und privat. Entwickelt in Hamburg.</p>
+            </div>
+            <div class="footer-col">
+                <h4 data-de="Produkt" data-en="Product">Produkt</h4>
+                <ul>
+                    <li><a href="/#features" data-de="Features" data-en="Features">Features</a></li>
+                    <li><a href="/#engines" data-de="KI Engines" data-en="AI Engines">KI Engines</a></li>
+                    <li><a href="/#pricing" data-de="Preise" data-en="Pricing">Preise</a></li>
+                    <li><a href="/install" data-de="Download" data-en="Download">Download</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-de="Support" data-en="Support">Support</h4>
+                <ul>
+                    <li><a href="/#faq" data-de="FAQ" data-en="FAQ">FAQ</a></li>
+                    <li><a href="mailto:emke.tom@gmail.com" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-de="Rechtliches" data-en="Legal">Rechtliches</h4>
+                <ul>
+                    <li><a href="/impressum.html" data-de="Impressum" data-en="Imprint">Impressum</a></li>
+                    <li><a href="/datenschutz.html" data-de="Datenschutz" data-en="Privacy (DE)">Datenschutz</a></li>
+                    <li><a href="/privacy.html" data-de="Privacy Policy (EN)" data-en="Privacy Policy">Privacy Policy (EN)</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 GenAudioBook. Tom Emke.</span>
+            <span data-de="Entwickelt in Hamburg" data-en="Built in Hamburg">Entwickelt in Hamburg</span>
+        </div>
+    </div>
+</footer>
+
+<script src="../script.js?v=2"></script>
+</body>
+</html>
