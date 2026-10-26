@@ -43,5 +43,5 @@ GenAudioBook is a native macOS application that converts ebooks (EPUB, PDF, TXT,
 
 - Website: https://genaudiobook.com
 - Buy Pro: https://tomember.gumroad.com/l/epdibx
-- Contact: emke.tom@gmail.com
+- Contact: embke.tom@gmail.com
 - Developer: Tom Emke, Hamburg, Germany
