@@ -37,8 +37,8 @@ function setLang(lang) {
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
         metaDesc.content = lang === 'de'
-            ? 'Verwandle jedes EPUB, PDF oder Textdokument in ein professionelles Hörbuch — 100% lokal auf deinem Mac. 6 KI-Stimmen, 17+ Sprachen, Voice Cloning. 24h kostenlos testen.'
-            : 'Turn any EPUB, PDF or text document into a professional audiobook — 100% local on your Mac. 6 AI voices, 17+ languages, voice cloning. 24h free trial.';
+            ? 'Verwandle jedes EPUB, PDF oder Textdokument in ein professionelles Hörbuch — 100% lokal auf deinem Mac. 5 KI-Engines, 17+ Sprachen, Voice Cloning. 24h kostenlos testen.'
+            : 'Turn any EPUB, PDF or text document into a professional audiobook — 100% local on your Mac. 5 AI engines, 17+ languages, voice cloning. 24h free trial.';
     }
 
     // Update pricing badge
